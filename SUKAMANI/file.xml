@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><config><jdbc><url>jdbc:mysql://localhost/semivproj</url><driver>com.mysql.jdbc.Driver</driver><username>root</username><password/></jdbc></config>

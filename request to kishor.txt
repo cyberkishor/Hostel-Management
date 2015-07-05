@@ -1,0 +1,26 @@
+Kishor jee,
+1. Please manage to print from Payment to "Print_receipt.java" only very few fields required as i have designed.
+
+2. backup and restore
+
+3. User Previlidge
+
+	a. Admin
+		- -All menus
+
+	b. Administration user
+		- Functions Menu - change passowrd and logout only
+		- Administraion menu, utilities menu and help menu total
+		
+
+	c. Account User
+		- Functions Menu - change passowrd and logout only
+		- Account menu and help menu total
+		
+
+	d. Warden
+		- Functions Menu - change passowrd and logout only
+		- warden menu and help menu total
+		
+
+	

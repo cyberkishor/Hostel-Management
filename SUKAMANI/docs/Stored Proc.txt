@@ -1,0 +1,40 @@
+DROP PROCEDURE IF EXISTS getDataFromUserIDPassword;
+
+CREATE PROCEDURE getDataFromUserIDPassword(IN userID INT, IN pwd VARCHAR(255))
+	BEGIN
+		SELECT * from users where id=userID AND password=pwd;
+	END;
+
+
+
+DROP PROCEDURE IF EXISTS getDataFromUsernamePassword;
+
+CREATE PROCEDURE getDataFromUsernamePassword(IN uname VARCHAR(255), IN pwd VARCHAR(255))
+	BEGIN
+		SELECT * FROM users WHERE username=uname AND password = pwd AND status = 1;
+	END;
+
+
+DROP PROCEDURE IF EXISTS deleteFromTable;
+
+CREATE PROCEDURE deleteFromTable(IN tbl VARCHAR(255), IN mid INT)
+	BEGIN
+		SET @GetName =
+			CONCAT('DELETE FROM ', tbl, ' WHERE id=', mid);
+		PREPARE stmt FROM @GetName;
+		EXECUTE stmt;		
+		DEALLOCATE PREPARE stmt;
+	END;
+
+
+
+DROP PROCEDURE IF EXISTS getDataFromID;
+
+CREATE PROCEDURE getDataFromID(IN tbl VARCHAR(255), IN mid INT)
+	BEGIN
+		SET @GetName =
+			CONCAT('Select * FROM ', tbl, ' WHERE id=', mid);
+		PREPARE stmt FROM @GetName;
+		EXECUTE stmt;		
+		DEALLOCATE PREPARE stmt;
+	END;
