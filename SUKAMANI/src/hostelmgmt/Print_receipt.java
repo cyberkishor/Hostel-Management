@@ -5,15 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import hostelmgmt.connection.connection;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPathExpressionException;
-import org.xml.sax.SAXException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,39 +25,21 @@ public class Print_receipt extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     
-    public Print_receipt(int id) {
-        try{
+    public Print_receipt(String[] params) {
+        
+        
             initComponents();
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            conn = connection.getConnection();
-            String  sql = "select * from member where `id` ="+id;
-            try{
-                pst = conn.prepareStatement(sql);
-                rs = pst.executeQuery();
-                if(rs.next()){
-                    name.setText(rs.getString("fname"+"lname"));
-                    rent.setText(rs.getString("rent"));
-                    deposit.setText(rs.getString("deposit"));
-                    other.setText(rs.getString("other"));
-                    discount.setText(rs.getString("discount"));
-                    total.setText(rs.getString("total"));
-                    userlog.setText(rs.getString("login"));
-                    
-                }
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e);
-            }
-        }catch(ParserConfigurationException ex){
-            Logger.getLogger(Print_receipt.class.getName()).log(Level.SEVERE, null,ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(Print_receipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Print_receipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (XPathExpressionException ex) {
-            Logger.getLogger(Print_receipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(Print_receipt.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+            name.setText(params[0]);
+            rent.setText(params[4]);
+//            deposit.setText(params[0]);
+            other.setText(params[3]);
+            discount.setText(params[1]);
+            total.setText(params[2]);
+            userlog.setText(params[5]);                    
+            
+        
             
     }
 

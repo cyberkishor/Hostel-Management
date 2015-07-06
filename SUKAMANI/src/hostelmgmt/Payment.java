@@ -661,6 +661,10 @@ public class Payment extends javax.swing.JInternalFrame {
         boolean depCheck = dep_check.isSelected();
         boolean otherCheck = other_check.isSelected();
         boolean discCheck = discount_check.isSelected();
+        String fName = fnameEdit.getText();
+        String lName = lnameEdit.getText();
+        String tName = fName + " " + lName;
+        
         if(this.is_active==1){
         }
 
@@ -730,11 +734,13 @@ public class Payment extends javax.swing.JInternalFrame {
 
             String insertSQL = "Update member set paid_upto =(STR_TO_DATE( ?, '%m/%d/%Y')), modified_by=?,status=1 where id=?";
             String execute_params[] = {Sqlpayupto, login, member};
+            
             connection.dbExecute(insertSQL, execute_params);
             
+            String printData[] = {tName,deductionAmt, total, otherAmt,rent,user.getUserName() };
 //            Printcomponent  p = new Printcomponent();
-//            Print_receipt i = new Print_receipt();
-//            
+            Print_receipt i = new Print_receipt(printData);
+            i.setVisible(true);
 //            p.printComponent(i);
             
             this.ClearField();

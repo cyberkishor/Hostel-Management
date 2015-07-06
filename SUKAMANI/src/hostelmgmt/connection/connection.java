@@ -152,6 +152,24 @@ public class connection {
         }
         return p.execute();
     }
+    public static int dbExecuteReturnId(String sql, String [] params ) throws SQLException{
+        PreparedStatement p;
+        ResultSet rs;
+        p = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        //        System.out.println(sql);
+
+        for(int i=0; i < params.length ;i++){
+            p.setString(i+1,params[i]);
+        }
+        int numero = p.executeUpdate();
+        int risultato = 0;
+        rs = p.getGeneratedKeys();
+        if (rs.next()){
+            risultato = rs.getInt(1);
+        }
+        return risultato;
+    }
+    
     public static int dbExecuteUpdate(String sql, String [] params ) throws SQLException{
         PreparedStatement pst;
         pst = con.prepareStatement(sql);
